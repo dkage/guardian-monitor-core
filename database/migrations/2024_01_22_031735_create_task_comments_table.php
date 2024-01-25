@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('task_comments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('task_id');
+            $table->text('comment');
+            $table->string('attachment')->nullable();
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

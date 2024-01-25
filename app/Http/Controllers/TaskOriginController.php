@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TaskPriority;
+use App\Models\TaskOrigin;
 use Illuminate\Http\Request;
 
-class TaskPriorityController extends Controller
+class TaskOriginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class TaskPriorityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TaskPriority $taskPriority)
+    public function show(TaskOrigin $taskOrigin)
     {
         //
     }
@@ -42,7 +42,7 @@ class TaskPriorityController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TaskPriority $taskPriority)
+    public function edit(TaskOrigin $taskOrigin)
     {
         //
     }
@@ -50,7 +50,7 @@ class TaskPriorityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TaskPriority $taskPriority)
+    public function update(Request $request, TaskOrigin $taskOrigin)
     {
         //
     }
@@ -58,7 +58,7 @@ class TaskPriorityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaskPriority $taskPriority)
+    public function destroy(TaskOrigin $taskOrigin)
     {
         //
     }
