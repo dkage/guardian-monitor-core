@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TaskOrigin;
+use App\Models\Origin;
 use Illuminate\Http\Request;
 
 class TaskOriginController extends Controller
@@ -34,7 +34,7 @@ class TaskOriginController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TaskOrigin $taskOrigin)
+    public function show(Origin $taskOrigin)
     {
         //
     }
@@ -42,7 +42,7 @@ class TaskOriginController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TaskOrigin $taskOrigin)
+    public function edit(Origin $taskOrigin)
     {
         //
     }
@@ -50,7 +50,7 @@ class TaskOriginController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TaskOrigin $taskOrigin)
+    public function update(Request $request, Origin $taskOrigin)
     {
         //
     }
@@ -58,7 +58,7 @@ class TaskOriginController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaskOrigin $taskOrigin)
+    public function destroy(Origin $taskOrigin)
     {
         //
     }
