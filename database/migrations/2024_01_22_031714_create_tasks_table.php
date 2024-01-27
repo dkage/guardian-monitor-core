@@ -21,8 +21,8 @@ return new class extends Migration
             $table->integer('order')->default(999);
             $table->boolean('completed')->default(false);
             $table->timestamp('completed_at')->nullable();
-            $table->foreignId('origin_creation')->nullable()->comment('As every task can be created directly on the Laravel API, or through Todoist/Google Calendar integrations, this field will identify the origin')->constrained('task_origins');
-            $table->foreignId('origin_completion')->nullable()->comment('As every task can be finished/done directly on the Laravel API, or through Todoist/Google Calendar integrations, this field will show where it was marked as completed')->constrained('task_origins');
+            $table->foreignId('origin_creation')->nullable()->comment('As every task can be created directly on the Laravel API, or through Todoist/Google Calendar integrations, this field will identify the origin')->constrained('origins');
+            $table->foreignId('origin_completion')->nullable()->comment('As every task can be finished/done directly on the Laravel API, or through Todoist/Google Calendar integrations, this field will show where it was marked as completed')->constrained('origins');
             $table->string('color')->nullable();
             $table->timestamps();
         });
