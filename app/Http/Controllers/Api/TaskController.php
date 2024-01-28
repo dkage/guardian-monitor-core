@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\TaskComment;
+use App\Http\Controllers\Controller;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
-class TaskCommentController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class TaskCommentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TaskComment $taskComment)
+    public function show(Task $tasks)
     {
         //
     }
@@ -42,7 +43,7 @@ class TaskCommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TaskComment $taskComment)
+    public function edit(Task $tasks)
     {
         //
     }
@@ -50,7 +51,7 @@ class TaskCommentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TaskComment $taskComment)
+    public function update(Request $request, Task $tasks)
     {
         //
     }
@@ -58,7 +59,7 @@ class TaskCommentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaskComment $taskComment)
+    public function destroy(Task $tasks)
     {
         //
     }

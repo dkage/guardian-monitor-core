@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Origin;
+use App\Http\Controllers\Controller;
+use App\Models\TaskLabel;
 use Illuminate\Http\Request;
 
-class TaskOriginController extends Controller
+class TaskLabelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class TaskOriginController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Origin $taskOrigin)
+    public function show(TaskLabel $taskLabel)
     {
         //
     }
@@ -42,7 +43,7 @@ class TaskOriginController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Origin $taskOrigin)
+    public function edit(TaskLabel $taskLabel)
     {
         //
     }
@@ -50,7 +51,7 @@ class TaskOriginController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Origin $taskOrigin)
+    public function update(Request $request, TaskLabel $taskLabel)
     {
         //
     }
@@ -58,7 +59,7 @@ class TaskOriginController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Origin $taskOrigin)
+    public function destroy(TaskLabel $taskLabel)
     {
         //
     }

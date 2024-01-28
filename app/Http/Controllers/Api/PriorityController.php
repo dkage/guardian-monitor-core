@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Label;
+use App\Http\Controllers\Controller;
+use App\Models\Priority;
 use Illuminate\Http\Request;
 
-class LabelController extends Controller
+class PriorityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class LabelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Label $label)
+    public function show(Priority $taskPriority)
     {
         //
     }
@@ -42,7 +43,7 @@ class LabelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Label $label)
+    public function edit(Priority $taskPriority)
     {
         //
     }
@@ -50,7 +51,7 @@ class LabelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Label $label)
+    public function update(Request $request, Priority $taskPriority)
     {
         //
     }
@@ -58,7 +59,7 @@ class LabelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Label $label)
+    public function destroy(Priority $taskPriority)
     {
         //
     }

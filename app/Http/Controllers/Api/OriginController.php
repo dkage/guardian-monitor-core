@@ -1,18 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Priority;
+use App\Http\Controllers\Controller;
+use App\Models\Origin;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class PriorityController extends Controller
+class OriginController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $data = Origin::all();
+
+        return response()->json($data, 200);
     }
 
     /**
@@ -34,7 +38,7 @@ class PriorityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Priority $taskPriority)
+    public function show(Origin $taskOrigin)
     {
         //
     }
@@ -42,7 +46,7 @@ class PriorityController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Priority $taskPriority)
+    public function edit(Origin $taskOrigin)
     {
         //
     }
@@ -50,7 +54,7 @@ class PriorityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Priority $taskPriority)
+    public function update(Request $request, Origin $taskOrigin)
     {
         //
     }
@@ -58,7 +62,7 @@ class PriorityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Priority $taskPriority)
+    public function destroy(Origin $taskOrigin)
     {
         //
     }
