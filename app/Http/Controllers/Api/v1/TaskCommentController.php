@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\TaskLabel;
+use App\Models\TaskComment;
 use Illuminate\Http\Request;
 
-class TaskLabelController extends Controller
+class TaskCommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class TaskLabelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TaskLabel $taskLabel)
+    public function show(TaskComment $taskComment)
     {
         //
     }
@@ -43,7 +43,7 @@ class TaskLabelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TaskLabel $taskLabel)
+    public function edit(TaskComment $taskComment)
     {
         //
     }
@@ -51,7 +51,7 @@ class TaskLabelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TaskLabel $taskLabel)
+    public function update(Request $request, TaskComment $taskComment)
     {
         //
     }
@@ -59,7 +59,7 @@ class TaskLabelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaskLabel $taskLabel)
+    public function destroy(TaskComment $taskComment)
     {
         //
     }

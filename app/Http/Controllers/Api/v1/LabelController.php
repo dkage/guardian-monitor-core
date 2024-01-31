@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Calendar;
+use App\Models\Label;
 use Illuminate\Http\Request;
 
-class CalendarController extends Controller
+class LabelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class CalendarController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Calendar $calendar)
+    public function show(Label $label)
     {
         //
     }
@@ -43,7 +43,7 @@ class CalendarController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Calendar $calendar)
+    public function edit(Label $label)
     {
         //
     }
@@ -51,7 +51,7 @@ class CalendarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Calendar $calendar)
+    public function update(Request $request, Label $label)
     {
         //
     }
@@ -59,7 +59,7 @@ class CalendarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Calendar $calendar)
+    public function destroy(Label $label)
     {
         //
     }
