@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\v1\PriorityController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\OriginController;
@@ -21,7 +22,8 @@ Route::group(['prefix' => 'v1'], function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login',    [AuthController::class, 'login']);
 
-    Route::APIresource('/origins', OriginController::class);
+    Route::APIresource('/origin', OriginController::class);
+    Route::APIresource('/priority', PriorityController::class);
 
     Route::group(['middleware' => 'auth:sanctum'], function () {
 

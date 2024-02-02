@@ -42,7 +42,7 @@ class OriginController extends ApiController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): JsonResponse
     {
         $validated = $request->validate(['name' => 'required|string|max:255']);
         $data = Origin::findOrFail($id);
