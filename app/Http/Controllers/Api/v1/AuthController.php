@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
@@ -19,7 +20,7 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
+            return response()->json(['errors' => $validator->errors()], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         $user = User::create([
@@ -33,5 +34,34 @@ class AuthController extends Controller
 
     public function login(Request $request) {
 
+        $credentials = $request->validate([
+            'email' => 'email|required',
+            'password' => 'required'
+        ]);
+
+        if (!auth()->attempt($credentials)) {
+            return response()->json(['success' => false, 'error' => 'Invalid credentials'], Response::HTTP_UNAUTHORIZED);
+        }
+
+        $user = User::where('email', $request->email)->firstOrFail();
+        $authToken = $user->createToken('authToken')->plainTextToken;
+
+
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'email' => $user->email,
+                'access_token' => $authToken,
+                'token_type' => 'Bearer'
+                ]
+            ],
+            Response::HTTP_OK);
+
+    }
+
+    public function logout(Request $request) {
+
+        $request->user()->tokens()->delete();
+        return response()->json(['success' => true], Response::HTTP_OK);
     }
 }

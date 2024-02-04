@@ -17,18 +17,16 @@ use App\Http\Controllers\Api\v1\AuthController;
 |
 */
 
-Route::group(['prefix' => 'v1'], function () {
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login',    [AuthController::class, 'login']);
+Route::post('/logout',   [AuthController::class, 'logout'])->middleware('auth:sanctum')->name('logout');
 
-    Route::post('/register', [AuthController::class, 'register']);
-    Route::post('/login',    [AuthController::class, 'login']);
 
-    Route::APIresource('/origin', OriginController::class);
-    Route::APIresource('/priority', PriorityController::class);
+Route::group(['prefix' => 'v1', 'middleware' => 'auth:sanctum', 'as' => 'api.'], function () {
 
-    Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::apiResource('origin', OriginController::class);
+    Route::apiResource('priority', PriorityController::class);
 
-        Route::post('/logout', [AuthController::class, 'logout']);
 
-    });
 
 });
