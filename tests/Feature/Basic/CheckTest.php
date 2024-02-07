@@ -1,19 +1,20 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Basic;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class CheckTest extends TestCase
 {
     /**
      * A basic test example.
      */
-    public function test_the_application_returns_a_successful_response(): void
+    public function test_backend_is_running(): void
     {
         $response = $this->get('/');
 
         $response->assertStatus(200);
+        $response->assertSee('System running as intended.');
     }
 }
