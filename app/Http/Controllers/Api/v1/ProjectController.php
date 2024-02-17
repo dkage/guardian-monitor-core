@@ -14,7 +14,7 @@ class ProjectController extends ApiController
      */
     public function index()
     {
-        return $this->respondWithSuccess(Project::all(), Response::HTTP_OK);
+        return $this->respondWithSuccess(Project::all());
     }
 
 
@@ -23,7 +23,10 @@ class ProjectController extends ApiController
      */
     public function store(ProjectStoreOrUpdateRequest $request)
     {
-        //
+        $data = $request->validated();
+        $project = Project::create($data);
+
+        return $this->respondWithSuccess($project, Response::HTTP_CREATED);
     }
 
     /**
@@ -31,7 +34,7 @@ class ProjectController extends ApiController
      */
     public function show(Project $project)
     {
-        return $this->respondWithSuccess($project, Response::HTTP_OK);
+        return $this->respondWithSuccess($project);
     }
 
 
@@ -40,7 +43,10 @@ class ProjectController extends ApiController
      */
     public function update(ProjectStoreOrUpdateRequest $request, Project $project)
     {
+        $data = $request->validated();
+        $project->update($data);
 
+        return $this->respondWithSuccess($project);
     }
 
     /**
