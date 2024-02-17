@@ -2,32 +2,26 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\ApiController;
+use App\Http\Requests\Project\ProjectStoreOrUpdateRequest;
 use App\Models\Project;
-use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-class ProjectController extends Controller
+class ProjectController extends ApiController
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return $this->respondWithSuccess(Project::all(), Response::HTTP_OK);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProjectStoreOrUpdateRequest $request)
     {
         //
     }
@@ -37,23 +31,16 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return $this->respondWithSuccess($project, Response::HTTP_OK);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Project $project)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(ProjectStoreOrUpdateRequest $request, Project $project)
     {
-        //
+
     }
 
     /**
@@ -61,6 +48,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return $this->respondWithSuccess(null, Response::HTTP_NO_CONTENT);
     }
 }
