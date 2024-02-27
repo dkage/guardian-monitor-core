@@ -1,0 +1,17 @@
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "name": "Guardian-Monitor"
+        },
+        {
+            "id": 2,
+            "name": "Todoist"
+        },
+        {
+            "id": 3,
+            "name": "Google Calendar"
+        }
+    ]
+}
