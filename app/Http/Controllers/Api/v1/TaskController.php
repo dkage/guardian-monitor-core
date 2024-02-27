@@ -36,16 +36,16 @@ class TaskController extends ApiController
     /**
      * Display the specified resource.
      */
-    public function show(Task $tasks)
+    public function show(Task $task)
     {
-        //
+        return $this->respondWithSuccess($task);
     }
 
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $tasks)
+    public function update(Request $request, Task $task)
     {
         //
     }
@@ -54,8 +54,10 @@ class TaskController extends ApiController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Task $tasks)
+    public function destroy(Task $task)
     {
-        //
+        $task->delete();
+
+        return $this->respondWithSuccess(null, Response::HTTP_NO_CONTENT);
     }
 }

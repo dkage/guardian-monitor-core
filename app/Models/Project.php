@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -23,9 +25,11 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Project whereId($value)
  * @method static Builder|Project whereName($value)
  * @method static Builder|Project whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @mixin Eloquent
  */
 class Project extends Model
 {
     use HasFactory;
+
+    public function tasks(): HasMany { return $this->hasMany(Task::class); }
 }

@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Priority;
+use App\Models\Label;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Priority>
+ * @extends Factory<Label>
  */
-class PriorityFactory extends Factory
+class LabelFactory extends Factory
 {
     /**
      * Define the model's default state.

@@ -6,6 +6,9 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -62,5 +65,10 @@ class Task extends Model
         'color'
     ];
 
-
+    public function project(): BelongsTo { return $this->belongsTo(Project::class); }
+    public function priority(): BelongsTo {return $this->belongsTo(Priority::class); }
+    public function originCreation(): BelongsTo { return $this->belongsTo(Origin::class); }
+    public function originCompletion(): BelongsTo { return $this->belongsTo(Origin::class); }
+    public function comments(): HasMany { return $this->hasMany(TaskComment::class);}
+    public function labels(): BelongsToMany { return $this->belongsToMany(Label::class, 'task_labels'); }
 }

@@ -28,5 +28,6 @@ use Illuminate\Support\Carbon;
 class TaskLabel extends Model
 {
     // Pivot model for task_label table
+    protected $table = 'task_label';
 
 }

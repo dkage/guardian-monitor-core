@@ -39,7 +39,7 @@ class LabelController extends ApiController
      */
     public function show(Label $label)
     {
-        //
+        return $this->respondWithSuccess($label);
     }
 
     /**
@@ -55,7 +55,10 @@ class LabelController extends ApiController
      */
     public function update(Request $request, Label $label)
     {
-        //
+        $validated_data = $request->validated();
+        $label->update($validated_data);
+
+        return $this->respondWithSuccess($label);
     }
 
     /**

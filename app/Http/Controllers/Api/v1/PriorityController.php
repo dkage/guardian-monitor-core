@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Requests\Priority\PriorityStoreOrUpdateRequest;
 use App\Models\Priority;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -26,28 +27,23 @@ class PriorityController extends ApiController
      *
      * @return JsonResponse - contains the newly created resource
      */
-    public function store(Request $request): JsonResponse
+    public function store(PriorityStoreOrUpdateRequest $request): JsonResponse
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'color' => 'required|string|max:255'
-        ]);
+        $validated_data = $request->validated();
+        $priority = Priority::create($validated_data);
 
-        $data = Priority::create($validated);
-
-        return $this->respondWithSuccess($data, Response::HTTP_CREATED);
+        return $this->respondWithSuccess($priority, Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param string $priorityId
+     * @param Priority $priority
      * @return JsonResponse - contains the specified resource
      */
-    public function show(string $priorityId): JsonResponse
+    public function show(Priority $priority): JsonResponse
     {
-        $data = Priority::findOrFail($priorityId);
-        return $this->respondWithSuccess($data);
+        return $this->respondWithSuccess($priority);
     }
 
     /**
@@ -55,29 +51,23 @@ class PriorityController extends ApiController
      *
      * @return JsonResponse - contains the updated resource value
      */
-    public function update(Request $request, string $id): JsonResponse
+    public function update(PriorityStoreOrUpdateRequest $request, Priority $priority): JsonResponse
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'color' => 'required|string|max:255'
-        ]);
+        $validated_data = $request->validated();
+        $priority->update($validated_data);
 
-        $data = Priority::findOrFail($id);
-        $data->update($validated);
-
-        return $this->respondWithSuccess($data);
+        return $this->respondWithSuccess($priority);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param string $priorityId
+     * @param Priority $priority
      * @return JsonResponse - with no content as delete is successful
      */
-    public function destroy(string $priorityId): JsonResponse
+    public function destroy(Priority $priority): JsonResponse
     {
-        $data = Priority::findOrFail($priorityId);
-        $data->delete();
+        $priority->delete();
 
         return $this->respondWithSuccess(null, Response::HTTP_NO_CONTENT);
     }

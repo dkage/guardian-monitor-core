@@ -6,6 +6,7 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -30,4 +31,8 @@ class Origin extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
     protected $fillable = ['name'];
+
+
+    public function tasks(): HasMany { return $this->hasMany(Task::class, 'origin_creation_id'); }
+    public function tasksCompletedAt(): HasMany { return $this->hasMany(Task::class, 'origin_completion_id'); }
 }
