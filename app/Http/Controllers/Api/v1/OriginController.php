@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Requests\Origin\OriginStoreOrUpdateRequest;
 use App\Models\Origin;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -22,10 +23,10 @@ class OriginController extends ApiController
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): JsonResponse
+    public function store(OriginStoreOrUpdateRequest $request): JsonResponse
     {
-        $validated = $request->validate(['name' => 'required|string|max:255']);
-        $data = Origin::create($validated);
+        $validated_data = $request->validated();
+        $data = Origin::create($validated_data);
 
         return $this->respondWithSuccess($data, Response::HTTP_CREATED);
     }
@@ -33,31 +34,28 @@ class OriginController extends ApiController
     /**
      * Display the specified resource.
      */
-    public function show(string $id): JsonResponse
+    public function show(Origin $origin): JsonResponse
     {
-        $data = Origin::findOrFail($id);
-        return $this->respondWithSuccess($data);
+        return $this->respondWithSuccess($origin);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id): JsonResponse
+    public function update(OriginStoreOrUpdateRequest $request, Origin $origin): JsonResponse
     {
-        $validated = $request->validate(['name' => 'required|string|max:255']);
-        $data = Origin::findOrFail($id);
-        $data->update($validated);
+        $validated_data = $request->validated();
+        $origin->update($validated_data);
 
-        return $this->respondWithSuccess($data);
+        return $this->respondWithSuccess($origin);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id): JsonResponse
+    public function destroy(Origin $origin): JsonResponse
     {
-        $data = Origin::findOrFail($id);
-        $data->delete();
+        $origin->delete();
 
         return $this->respondWithSuccess(null, Response::HTTP_NO_CONTENT);
     }
