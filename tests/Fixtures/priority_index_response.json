@@ -1,0 +1,25 @@
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "name": "None",
+            "color": "#808080"
+        },
+        {
+            "id": 2,
+            "name": "Low",
+            "color": "#0000FF"
+        },
+        {
+            "id": 3,
+            "name": "Medium",
+            "color": "#FFA500"
+        },
+        {
+            "id": 4,
+            "name": "High",
+            "color": "#FF0000"
+        }
+    ]
+}

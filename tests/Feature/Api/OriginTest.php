@@ -27,6 +27,7 @@ class OriginTest extends TestCase
         $this->user = User::find(1);
     }
 
+
     public function test_api_access_origin_without_authentication_triggers_401(): void
     {
         $response = $this->getJson('/api/v1/origin');
@@ -53,7 +54,6 @@ class OriginTest extends TestCase
 
         $jsonStructure = JsonStructureConverter::convert(__DIR__ . '/../../Fixtures/origin_show_response.json');
         $response->assertJsonStructure($jsonStructure);
-
     }
 
 
