@@ -21,9 +21,6 @@ class OriginTest extends TestCase
     {
         parent::setUp();
 
-        $this->seed(OriginSeeder::class);
-        $this->seed(AdminUserSeeder::class);
-
         $this->user = User::find(1);
     }
 

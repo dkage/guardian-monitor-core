@@ -12,6 +12,7 @@ class AuthenticationTest extends TestCase
     use RefreshDatabase;
     private User $user;
 
+
     protected function setUp(): void
     {
         parent::setUp();

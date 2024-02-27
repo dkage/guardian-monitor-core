@@ -2,35 +2,36 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\ApiController;
+use App\Http\Requests\Tasks\TaskStoreRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-class TaskController extends Controller
+class TaskController extends ApiController
 {
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $data = Task::all();
+        return $this->respondWithSuccess($data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TaskStoreRequest $request)
     {
-        //
+        $data = $request->validated();
+        $task = Task::create($data);
+
+        return $this->respondWithSuccess($task, Response::HTTP_CREATED);
     }
+
 
     /**
      * Display the specified resource.
@@ -40,13 +41,6 @@ class TaskController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Task $tasks)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -55,6 +49,7 @@ class TaskController extends Controller
     {
         //
     }
+
 
     /**
      * Remove the specified resource from storage.

@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\ApiController;
 use App\Models\Label;
 use Illuminate\Http\Request;
 
-class LabelController extends Controller
+class LabelController extends ApiController
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $labels = Label::all();
+
+        return $this->respondWithSuccess($labels);
     }
 
     /**

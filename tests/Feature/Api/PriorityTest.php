@@ -20,11 +20,6 @@ class PriorityTest extends TestCase
     {
         parent::setUp();
 
-        $this->seed([
-            PrioritySeeder::class,
-            AdminUserSeeder::class
-        ]);
-
         $this->user = User::find(1);
     }
 

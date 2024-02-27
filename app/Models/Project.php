@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Project
@@ -11,16 +13,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $name
  * @property string $color
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Project newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Project newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Project query()
- * @method static \Illuminate\Database\Eloquent\Builder|Project whereColor($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Project whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Project whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Project whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Project whereUpdatedAt($value)
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|Project newModelQuery()
+ * @method static Builder|Project newQuery()
+ * @method static Builder|Project query()
+ * @method static Builder|Project whereColor($value)
+ * @method static Builder|Project whereCreatedAt($value)
+ * @method static Builder|Project whereId($value)
+ * @method static Builder|Project whereName($value)
+ * @method static Builder|Project whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Project extends Model

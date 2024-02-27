@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Task
  *
  * @property int $id
- * @property string $name
+ * @property string $title
  * @property string|null $description
  * @property int $project_id
  * @property int $priority_id
@@ -20,28 +23,44 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $origin_creation As every task can be created directly on the Laravel API, or through Todoist/Google Calendar integrations, this field will identify the origin
  * @property int|null $origin_completion As every task can be finished/done directly on the Laravel API, or through Todoist/Google Calendar integrations, this field will show where it was marked as completed
  * @property string|null $color
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Task newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Task newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Task query()
- * @method static \Illuminate\Database\Eloquent\Builder|Task whereColor($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Task whereCompleted($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Task whereCompletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Task whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Task whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Task whereDueDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Task whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Task whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Task whereOrder($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Task whereOriginCompletion($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Task whereOriginCreation($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Task wherePriorityId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Task whereProjectId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Task whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @method static Builder|Task newModelQuery()
+ * @method static Builder|Task newQuery()
+ * @method static Builder|Task query()
+ * @method static Builder|Task whereColor($value)
+ * @method static Builder|Task whereCompleted($value)
+ * @method static Builder|Task whereCompletedAt($value)
+ * @method static Builder|Task whereCreatedAt($value)
+ * @method static Builder|Task whereDescription($value)
+ * @method static Builder|Task whereDueDate($value)
+ * @method static Builder|Task whereId($value)
+ * @method static Builder|Task whereName($value)
+ * @method static Builder|Task whereOrder($value)
+ * @method static Builder|Task whereOriginCompletion($value)
+ * @method static Builder|Task whereOriginCreation($value)
+ * @method static Builder|Task wherePriorityId($value)
+ * @method static Builder|Task whereProjectId($value)
+ * @method static Builder|Task whereUpdatedAt($value)
+ * @mixin Eloquent
  */
 class Task extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'description',
+        'project_id',
+        'priority_id',
+        'due_date',
+        'order',
+        'completed',
+        'completed_at',
+        'origin_creation',
+        'origin_completion',
+        'color'
+    ];
+
+
 }
