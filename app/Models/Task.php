@@ -80,14 +80,21 @@ class Task extends Model
 
         static::updating(function ($task) {
 
-
-
-            if($task->completed !== $task->getOriginal('completed')) {
-                // set carbon as timestamp without milliseconds
+            // If the task is marked as completed, set the completed_at field to the current date
+            if($task->completed !== $task->getOriginal('completed'))
                 $task->completed_at = $task->completed ? Carbon::now()->format('Y-m-d H:i:s') : null;
-            }
 
         });
+
+        static::deleting(function ($task) {
+
+            $task->labels()->detach();
+            $task->comments()->delete();
+
+            // TODO - Delete the task from the integrations (Todoist, Google Calendar, etc) maybe add to a delete queue table
+
+        });
+
     }
 
     public function project(): BelongsTo { return $this->belongsTo(Project::class); }
