@@ -52,7 +52,7 @@ class Task extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'title',
         'description',
         'project_id',
         'priority_id',
@@ -64,6 +64,31 @@ class Task extends Model
         'origin_completion',
         'color'
     ];
+
+    // create boot
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($task) {
+
+            // If no project is set, set it to 1 as default for "Unassigned" project
+            $task->project_id = $task->project_id ?? 1;
+            $task->priority_id = $task->priority_id ?? 1;
+
+        });
+
+        static::updating(function ($task) {
+
+
+
+            if($task->completed !== $task->getOriginal('completed')) {
+                // set carbon as timestamp without milliseconds
+                $task->completed_at = $task->completed ? Carbon::now()->format('Y-m-d H:i:s') : null;
+            }
+
+        });
+    }
 
     public function project(): BelongsTo { return $this->belongsTo(Project::class); }
     public function priority(): BelongsTo {return $this->belongsTo(Priority::class); }

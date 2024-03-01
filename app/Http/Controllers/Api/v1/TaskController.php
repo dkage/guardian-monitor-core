@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\Tasks\TaskStoreRequest;
+use App\Http\Requests\Tasks\TaskUpdateRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,9 +46,12 @@ class TaskController extends ApiController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $task)
+    public function update(TaskUpdateRequest $request, Task $task)
     {
-        //
+        $data = $request->validated();
+        $task->update($data);
+
+        return $this->respondWithSuccess($task);
     }
 
 
