@@ -25,6 +25,8 @@ return [
         'secret'   => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => env('GOOGLE_REDIRECT_URI'),
 //        'verify'   => env('GOOGLE_VERIFICATION_TOKEN'),
-    ]
+    ],
+
+    'state_token' => env('STATE_TOKEN'),
 
 ];

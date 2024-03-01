@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,3 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {return view('running');});
+Route::get('/todoist', [UserController::class, 'todoist']);
+Route::get('/todoist_return', [UserController::class, 'todoistReturn'])->name('todoist_return');
+
