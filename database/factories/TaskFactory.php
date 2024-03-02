@@ -30,7 +30,6 @@ class TaskFactory extends Factory
             },
             'origin_creation' => $origin == 0 ? null : $origin,
             'origin_completion' => $this->faker->randomElement([null, $origin == 0 ? null : $origin]),
-            'color' => $this->faker->hexColor,
         ];
     }
 

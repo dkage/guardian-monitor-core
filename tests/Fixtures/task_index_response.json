@@ -1,0 +1,20 @@
+{
+    "success": true,
+    "data": [
+        {
+            "id": 2,
+            "title": "Task Title",
+            "description": null,
+            "project_id": 1,
+            "priority_id": 1,
+            "due_date": null,
+            "order": 999,
+            "completed": 0,
+            "completed_at": null,
+            "origin_creation": null,
+            "origin_completion": null,
+            "created_at": "2024-03-01T16:46:09.000000Z",
+            "updated_at": "2024-03-01T16:46:09.000000Z"
+        }
+    ]
+}
