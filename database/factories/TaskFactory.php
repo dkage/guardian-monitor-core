@@ -17,6 +17,7 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         $origin = $this->faker->numberBetween(0, Origin::count());
+
         return [
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
